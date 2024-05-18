@@ -16,19 +16,20 @@ def check_win_host_port(port) -> bool:
     @param port 端口号起始值
     @return 未被占用的端口号
 """
-def select_win_host_port(port: int=7861) -> int:
+def get_win_host_port(port: int=7861) -> int:
     max_port = 65535
     while port != max_port:
         if check_win_host_port(port):
             port += 1
         else:
             return port
-    return port
+    return -1
 
 
 
 
-
-res = select_win_host_port()
-print(res)
+if __name__ == '__main__':
+    # 空闲端口
+    res: int = get_win_host_port()
+    print(res)
 
